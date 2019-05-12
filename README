@@ -7,7 +7,7 @@ pip3 install Flask
 
 
 == RUN SERVER ==
-python3 swserver.py
+python3 cgsw/swserver.py
 
 == RUN FRONTEND ==
 Open in webbrowser:
