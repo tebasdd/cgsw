@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+<table width="100%" height="100%">
+
+    <tr>
+        <td>
+            <div id="stopwatch_state"></div>
+            <div id="last_updated"></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <p id="elapsed_time" style="font-size:200px"></p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+
+{% if show_buttons %}
+            <table width="100%" border="1">
+                <tr>
+                    <td onclick='sw_send("run");'><p style="font-size:80px"> run </p></td>
+                    <td onclick='sw_send("stop");'><p style="font-size:80px"> stop </p></td>
+                    <td onclick='sw_send("reset");'><p style="font-size:80px" > reset </p></td>
+                </tr>
+            </table>
+{% else %}
+            <a href="control">control</a>
+{% endif %}
+
+        </td>
+    </tr>
+
+</table>
+
+<script>
+    var stopwatch;
+    var last_updated;
+
+    function sw_draw() {
+
+        if (stopwatch.is_running) {
+            _stopwatch_state = "running";
+            _elapsed_time = stopwatch.elapsed + (Date.now() / 1000. - last_updated);
+        } else {
+            _stopwatch_state = "not running";
+            _elapsed_time = stopwatch.elapsed;
+        };
+
+        document.getElementById("stopwatch_state").innerHTML = _stopwatch_state;
+        document.getElementById("elapsed_time").innerHTML = _elapsed_time.toFixed(1);
+        document.getElementById("last_updated").innerHTML = (Date.now() / 1000. - last_updated).toFixed(3);
+
+    }
+
+    function sw_send(command){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+                stopwatch = JSON.parse(this.responseText);
+                last_updated = Date.now() / 1000.;
+                sw_draw();
+            }
+
+        };
+        xmlhttp.open("GET", command, false);
+        xmlhttp.send();
+    }
+
+    function sw_update(){
+        sw_send("current");
+    }
+
+    sw_update();
+    <!--sw_draw();-->
+    setInterval(sw_update, 1000.);
+    setInterval(sw_draw, 100.);
+
+</script>
+
+</body>
+</html>
