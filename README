@@ -11,9 +11,10 @@ pip3 install Flask
 python3 cgsw/swserver.py
 
 == RUN FRONTEND ==
-Open in webbrowser:
+Open in webbrowser (i.e. the big display):
     http://<HOST>:8000/
-    or
+
+Open in webbrowser (i.e. the remote control):
     http://<HOST>:8000/control
 
 were <HOST> is 'localhost', the RasPi-IP, ...!
