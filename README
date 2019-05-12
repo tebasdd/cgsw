@@ -1,11 +1,18 @@
+
+
+== INSTALL ==
 sudo apt update && sudo apt upgrade
 apt install python3 pip3
 pip3 install Flask
 
+
+== RUN SERVER ==
 python3 swserver.py
 
+== RUN FRONTEND ==
 Open in webbrowser:
-    http://localhost:8000/
+    http://<HOST>:8000/
     or
-    http://localhost:8000/control
+    http://<HOST>:8000/control
 
+were <HOST> is 'localhost', the RasPi-IP, ...!

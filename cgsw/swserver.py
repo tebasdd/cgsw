@@ -1,13 +1,14 @@
 """
-sudo apt update
-sudo apt upgrade
-apt install python3 pip
-pip install flask
+sudo apt update && sudo apt upgrade
+apt install python3 pip3
+pip3 install Flask
 
 python3 swserver.py
 
-firefox-or-any-other-browser http://localhost:8000/
-firefox-or-any-other-browser http://<RasPi-IP>:8000/
+Open in webbrowser:
+    http://localhost:8000/
+    or
+    http://localhost:8000/control
 """
 
 from flask import Flask, jsonify, redirect, render_template
