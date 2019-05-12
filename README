@@ -2,7 +2,8 @@
 
 == INSTALL ==
 sudo apt update && sudo apt upgrade
-apt install python3 pip3
+apt install python3 pip3 git
+git clone https://github.com/tebasdd/cgsw.git
 pip3 install Flask
 
 
