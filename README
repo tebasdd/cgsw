@@ -1,0 +1,11 @@
+sudo apt update && sudo apt upgrade
+apt install python3 pip3
+pip3 install Flask
+
+python3 swserver.py
+
+Open in webbrowser:
+    http://localhost:8000/
+    or
+    http://localhost:8000/control
+
